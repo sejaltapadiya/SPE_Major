@@ -24,12 +24,11 @@ pipeline {
         }
 
         stage('Maven Build') {
-            environment {
-                MVN_HOME = tool 'mvn'
-            }
+            
             steps {
                 dir('./BACKEND/ProsePetal') {
-                    sh "${MVN_HOME}/bin/mvn clean install"
+                    sh "mvn clean package"
+                    sh "mvn clean install"
                 }
             }
         }
