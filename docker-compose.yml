@@ -18,7 +18,7 @@ services:
     networks:
       - prosepetals-network
   prosepetals-backend:
-    image: ankitaagrawal12/prosepetals-backend
+    image: sejal28/prosepetals-backend
     container_name: prosepetals-backend
     ports:
       - "9595:9595"
@@ -34,7 +34,7 @@ services:
       mydb:
         condition: service_healthy
   prosepetals-frontend:
-    image: ankitaagrawal12/prosepetals-frontend
+    image: sejal28/prosepetals-frontend
     container_name: prosepetals-frontend
     stdin_open: true
     ports:
