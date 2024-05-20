@@ -58,7 +58,7 @@ pipeline {
         stage('Run Ansible Playbook') {
             steps {
                 script {
-                    sh 'ansible-playbook -i Inventory Playbook.yml'
+                    sh 'ansible-playbook -i inventory.ini Playbook.yml'
                 }
             }
         }
