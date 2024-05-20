@@ -58,7 +58,7 @@ pipeline {
         stage('Start Docker Compose stack') {
         steps {
             script {
-                sh 'docker rm -f database-container || true' // Remove the conflicting container if exists
+                sh 'docker rm -f database-container prosepetals-backend prosepetals-frontend|| true' // Remove the conflicting container if exists
                 sh 'docker-compose up -d' // Start the Docker Compose stack
             }
         }
