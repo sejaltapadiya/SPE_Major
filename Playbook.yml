@@ -1,4 +1,3 @@
----
 - name: Deploy Docker Compose stack
   hosts: localhost
   remote_user: sejal
@@ -25,7 +24,9 @@
         src: /var/lib/jenkins/workspace/SPE/docker-compose.yml
         dest: ./docker-compose.yml
 
+
     - name: Start Docker Compose stack
       command: docker-compose up -d
       args:
-        chdir: ../
+        chdir: ./
+
