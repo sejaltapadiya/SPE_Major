@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Git Pull') {
             steps {
-                git branch: 'main', url: 'https://github.com/AnkitaAgrawal12/SPE_majorproject.git'
+                git branch: 'main', url: 'https://github.com/sejaltapadiya/SPE_Major.git'
             }
         }
         stage('Maven Build') {
