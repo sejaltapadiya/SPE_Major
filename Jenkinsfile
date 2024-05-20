@@ -55,14 +55,15 @@ pipeline {
             }
         }
 
-        stage('Run Ansible Playbook') {
-            steps {
-                script {
-                    sh 'ansible-playbook -i inventory.ini Playbook.yml'
-                }
+        stage('Start Docker Compose stack') {
+        steps {
+            script {
+                sh 'docker rm -f database-container || true' // Remove the conflicting container if exists
+                sh 'docker-compose up -d' // Start the Docker Compose stack
             }
         }
     }
+}
 
     post {
         always {
