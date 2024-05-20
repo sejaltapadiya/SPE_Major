@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Build Docker Images') {
             steps {
-                dir('./BACKEND') {
+                dir('./BACKEND/ProsePetal') {
                     // Build backend Docker image
                     sh 'docker build -t sejal28/prosepetals-backend .'
                 }
