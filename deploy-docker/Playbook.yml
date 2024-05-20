@@ -29,11 +29,3 @@
       command: docker-compose up -d
       args:
         chdir: ../
-
-    //- name: Remove previous image with 'none' tag
-    //  shell: docker rmi $(docker images | grep "none" | awk '{print $3}')
-      //delegate_to: localhost
-
-    //- name: Remove previous image with 'none' tag on remoteserver
-      //shell: docker rmi $(docker images | grep "none" | awk '{print $3}')
-     // delegate_to: remoteserver
