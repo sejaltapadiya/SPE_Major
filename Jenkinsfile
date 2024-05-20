@@ -24,7 +24,9 @@ pipeline {
         }
 
         stage('Maven Build') {
-        
+            tools{
+                maven 'Maven'
+            }
             steps {
                 dir('./BACKEND/ProsePetal') {
                     sh "mvn clean install"
