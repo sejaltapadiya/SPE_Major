@@ -76,10 +76,14 @@ public class UserController {
         String jwtToken = authorizationHeader.substring(7); // Remove "Bearer " prefix
         try {
             String userEmail = jwtService.extractUsername(jwtToken);
+            System.out.println("Extracted userEmail: " + userEmail);
             Integer userId = userRepo.findUserIdByEmail(userEmail);
+            System.out.println("Retrieved userId: " + userId);
             UserDTO updatedUser = userService.updateUser(userId, userDTO);
+            System.out.println("Updated UserDTO: " + updatedUser);
             return new ResponseEntity<>(updatedUser, HttpStatus.OK);
         } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
