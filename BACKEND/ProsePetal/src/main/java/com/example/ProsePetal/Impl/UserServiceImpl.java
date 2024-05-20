@@ -19,11 +19,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO getProfileDetails(Integer userId) throws Exception {
-        User user = userRepo.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
-        
-        return convertToDTO(user);
+    public UserDTO getProfileDetails(Integer userId) {
+        User user = userRepo.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
+        return mapToDTO(user);
+    }
+
+    private UserDTO mapToDTO(User user) {
+        UserDTO userDTO = new UserDTO();
+        userDTO.setUserId(user.getUserId());
+        userDTO.setName(user.getName());
+        userDTO.setEmail(user.getEmail());
+        userDTO.setAbout(user.getAbout());
+        return userDTO;
     }
 
     @Override
@@ -32,25 +39,22 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
         userRepo.delete(user);
     }
-
     @Override
     public UserDTO updateUser(Integer userId, UserDTO userDTO) throws Exception {
         User user = userRepo.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
 
-        user.setName(userDTO.getName());
-        user.setEmail(userDTO.getEmail());
-        user.setAbout(userDTO.getAbout());
+        if (userDTO.getName() != null) {
+            user.setName(userDTO.getName());
+        }
+        if (userDTO.getEmail() != null) {
+            user.setEmail(userDTO.getEmail());
+        }
+        if (userDTO.getAbout() != null) {
+            user.setAbout(userDTO.getAbout());
+        }
 
         User updatedUser = userRepo.save(user);
-        return convertToDTO(updatedUser);
-    }
-
-    private UserDTO convertToDTO(User user) {
-        UserDTO userDTO = new UserDTO();
-        userDTO.setName(user.getName());
-        userDTO.setEmail(user.getEmail());
-        userDTO.setAbout(user.getAbout());
-        return userDTO;
+        return mapToDTO(updatedUser);
     }
 }
