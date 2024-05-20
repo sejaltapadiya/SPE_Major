@@ -24,11 +24,14 @@ pipeline {
         }
 
         stage('Maven Build') {
-            
+            tools {
+                maven 'Maven' // Use the Maven tool configured in Jenkins
+            }
             steps {
                 dir('./BACKEND/ProsePetal') {
                     sh "mvn clean package"
-                    sh "mvn clean install"
+                    // The 'install' goal includes the 'package' phase, so you only need 'install'
+                    sh "mvn install"
                 }
             }
         }
@@ -66,6 +69,19 @@ pipeline {
                     )
                 }
             }
+        }
+    }
+
+    post {
+        always {
+            echo 'Cleaning up temporary files and containers...'
+            sh 'docker system prune -f || true'
+        }
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed. Please check the logs for more details.'
         }
     }
 }
