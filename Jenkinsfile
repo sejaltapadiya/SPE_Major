@@ -24,9 +24,7 @@ pipeline {
         }
 
         stage('Maven Build') {
-            tools {
-                maven 'Maven' // This should match the name configured in Jenkins
-            }
+        
             steps {
                 dir('./BACKEND/ProsePetal') {
                     sh "mvn clean install"
