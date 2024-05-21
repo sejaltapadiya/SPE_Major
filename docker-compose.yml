@@ -9,10 +9,10 @@ volumes:
   logs:
 
 services:
-  database-container:
+  database:
     image: mysql:latest
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "database-container"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "database"]
       interval: 10s
       retries: 5
     container_name: database-container
@@ -24,13 +24,13 @@ services:
     networks:
       - prosepetals-network
 
-  prosepetals-backend:
+  backend:
     image: sejal28/prosepetals-backend
     container_name: prosepetals-backend
     ports:
       - "9595:9595"
     environment:
-      MYSQL_URL: jdbc:mysql://database-container:3306/blog_db?createDatabaseIfNotExist=true
+      MYSQL_URL: jdbc:mysql://database:3306/blog_db?createDatabaseIfNotExist=true
       MYSQL_USERNAME: sejal
       MYSQL_PASSWORD: sejal
     volumes:
@@ -38,10 +38,9 @@ services:
     networks:
       - prosepetals-network
     depends_on:
-      database-container:
-        condition: service_healthy
+      - database
 
-  prosepetals-frontend:
+  frontend:
     image: sejal28/prosepetals-frontend
     container_name: prosepetals-frontend
     stdin_open: true
@@ -50,4 +49,4 @@ services:
     networks:
       - prosepetals-network
     depends_on:
-      - prosepetals-backend
+      - backend
