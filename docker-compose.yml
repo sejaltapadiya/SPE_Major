@@ -37,8 +37,7 @@ services:
       - logs:/logs
     networks:
       - prosepetals-network
-    depends_on:
-      - database
+    
 
   frontend:
     image: sejal28/prosepetals-frontend
