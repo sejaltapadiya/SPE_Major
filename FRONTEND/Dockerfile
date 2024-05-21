@@ -7,4 +7,4 @@ RUN npm install react-router-dom --save
 RUN npm install bootstrap@latest
 RUN npm install react-bootstrap
 COPY . .
-CMD ["npm", "run", "test_start"]
+CMD ["npm", "run", "start"]
