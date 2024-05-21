@@ -75,7 +75,6 @@ pipeline {
     post {
         always {
             echo 'Cleaning up temporary files and containers...'
-            sh 'docker system prune -f || true'
         }
         success {
             echo 'Pipeline completed successfully!'
