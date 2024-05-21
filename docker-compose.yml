@@ -35,8 +35,13 @@ services:
       MYSQL_PASSWORD: sejal
     volumes:
       - logs:/logs
+      - ./wait-for-mysql.sh:/wait-for-mysql.sh
     networks:
       - prosepetals-network
+    depends_on:
+      database:
+        condition: service_healthy
+    entrypoint: ["/wait-for-mysql.sh", "database", "java", "-jar", "./security-0.0.1-SNAPSHOT.jar"]
     
 
   frontend:
