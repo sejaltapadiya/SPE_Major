@@ -8,7 +8,7 @@ volumes:
   logs:
 
 services:
-  database-container:
+  blog_db:
     image: mysql:latest
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
