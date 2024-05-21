@@ -8,5 +8,6 @@ RUN npm install bootstrap@latest
 RUN npm install react-bootstrap
 RUN npm install react-icons
 RUN npm install react-html-parser --force
+RUN npm install buffer --force
 COPY . .
 CMD ["npm", "run", "start"]
