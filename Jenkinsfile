@@ -22,7 +22,11 @@ pipeline {
                 }
             }
         }
-
+        stage('Create Network') {
+            steps {
+                sh 'docker network create prosepetals-network'
+            }
+        }
         stage('Maven Build') {
             steps {
                 dir('./BACKEND/ProsePetal') {
