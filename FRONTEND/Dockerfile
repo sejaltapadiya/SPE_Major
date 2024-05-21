@@ -7,6 +7,6 @@ RUN npm install react-router-dom --save
 RUN npm install bootstrap@latest
 RUN npm install react-bootstrap
 RUN npm install react-icons
-RUN npm install react-html-parser
+RUN npm install react-html-parser --force
 COPY . .
 CMD ["npm", "run", "start"]
