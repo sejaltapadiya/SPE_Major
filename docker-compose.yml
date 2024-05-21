@@ -8,10 +8,10 @@ volumes:
   logs:
 
 services:
-  blog_db:
+  database-container:
     image: mysql:latest
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "database-container"]
       interval: 10s
       retries: 5
     container_name: database-container
