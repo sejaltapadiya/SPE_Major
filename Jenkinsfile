@@ -25,6 +25,7 @@ pipeline {
         stage('Create Network') {
             steps {
                 sh 'docker network create prosepetals-network'
+                sleep 10
             }
         }
         stage('Maven Build') {
