@@ -2,6 +2,7 @@ version: '3.9'
 
 networks:
   prosepetals-network:
+    driver: bridge
 
 volumes:
   database-volume:
