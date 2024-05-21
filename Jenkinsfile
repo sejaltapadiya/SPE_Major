@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         GITHUB_REPO_URL = 'https://github.com/sejaltapadiya/SPE_Major.git'
-        DOCKER_CREDENTIALS_ID = 'DockerHubCred'
     }
 
     stages {
@@ -12,7 +11,7 @@ pipeline {
                 script {
                     sh 'docker rm -f prosepetals-frontend || true'
                     sh 'docker rm -f prosepetals-backend || true'
-                    sh 'docker rm -f database-container || true'
+                    sh 'docler rm -f database-container || true'
                     sh 'docker network rm prosepetals-network || true'
                 }
             }
@@ -25,18 +24,12 @@ pipeline {
                 }
             }
         }
-
         stage('Create Network') {
             steps {
-                script {
-                    def networkExists = sh(script: 'docker network inspect prosepetals-network > /dev/null 2>&1', returnStatus: true) == 0
-                    if (!networkExists) {
-                        sh 'docker network create prosepetals-network'
-                    }
-                }
+                sh 'docker network create prosepetals-network'
+                sleep 10
             }
         }
-
         stage('Maven Build') {
             steps {
                 dir('./BACKEND/ProsePetal') {
@@ -61,25 +54,23 @@ pipeline {
         stage('Push Docker Images') {
             steps {
                 script {
-                    retry(3) {
-                        docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS_ID) {
-                            sh 'echo "$DOCKERHUB_PASSWORD" | docker login -u sejal28 --password-stdin'
-                            sh 'docker push sejal28/prosepetals-frontend:latest'
-                            sh 'docker push sejal28/prosepetals-backend:latest'
-                        }
+                    docker.withRegistry('', 'DockerHubCred') {
+                        sh 'docker push sejal28/prosepetals-frontend:latest'
+                        sh 'docker push sejal28/prosepetals-backend:latest'
                     }
                 }
             }
         }
 
         stage('Start Docker Compose stack') {
-            steps {
-                script {
-                    sh 'docker-compose up -d' // Start the Docker Compose stack
-                }
+        steps {
+            script {
+                sh 'docker rm -f database-container prosepetals-backend prosepetals-frontend|| true' // Remove the conflicting container if exists
+                sh 'docker-compose up -d' // Start the Docker Compose stack
             }
         }
     }
+}
 
     post {
         always {
