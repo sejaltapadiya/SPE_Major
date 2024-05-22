@@ -15,8 +15,10 @@ services:
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: blog_db
+      MYSQL_ROOT_HOST: "%"
     volumes:
       - database-volume:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d
     networks:
       - prosepetals-network
     healthcheck:
