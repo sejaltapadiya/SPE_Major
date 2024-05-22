@@ -34,7 +34,7 @@ services:
     ports:
       - "9595:9595"
     environment:
-      MYSQL_URL: jdbc:mysql://database:3306/blog_db?createDatabaseIfNotExist=true
+      MYSQL_URL: jdbc:mysql://database:3306/blog_db?createDatabaseIfNotExist=true&enabledTLSProtocols=TLSv1.2
       MYSQL_USERNAME: sejal
       MYSQL_PASSWORD: sejal
     volumes:
