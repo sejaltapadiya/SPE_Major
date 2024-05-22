@@ -37,7 +37,6 @@ services:
       MYSQL_URL: jdbc:mysql://database:3306/blog_db?createDatabaseIfNotExist=true
       MYSQL_USERNAME: sejal
       MYSQL_PASSWORD: sejal
-      
     volumes:
       - logs:/logs
     networks:
