@@ -9,7 +9,7 @@ volumes:
   logs:
 
 services:
-  database:
+  database-mysql:
     image: mysql
     container_name: database-container
     ports:
@@ -34,7 +34,7 @@ services:
     ports:
       - "9595:9595"
     environment:
-      MYSQL_URL: jdbc:mysql://database:3306/blog_db?createDatabaseIfNotExist=true
+      MYSQL_URL: jdbc:mysql://database-mysql:3306/blog_db?createDatabaseIfNotExist=true
       MYSQL_USERNAME: sejal
       MYSQL_PASSWORD: sejal
     volumes:
@@ -55,4 +55,3 @@ services:
       - prosepetals-network
     depends_on:
       - backend
-jdbc:mysql://docker-mysql:3306/database?autoReconnect=true&useSSL=false
