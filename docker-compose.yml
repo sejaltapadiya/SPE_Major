@@ -10,7 +10,7 @@ volumes:
 
 services:
   database:
-    image: mysql:latest
+    image: mysql
     container_name: database-container
     ports:
       - "3305:3306"
