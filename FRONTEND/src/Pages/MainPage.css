@@ -1,59 +1,38 @@
-.button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
-  
-  .custom-button {
-    background-color: black;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .custom-button:hover {
-    background-color: #555;
-  }
-  
-  .card-img-top {
-    max-height: 200px;
-    object-fit: cover;
-  }
-  
-  
-  /* Define styles for card containers */
-.card-container {
-  height: 100%;
+/* MainPage.css */
+.main-page {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  height: 100vh;
 }
 
-/* Style the card content */
-.card-content {
-  padding: 15px;
+.flex-container {
   display: flex;
-  flex-direction: column;
+  flex-grow: 1;
 }
 
-/* Style the card title */
-.card-title {
-  font-size: 1.2rem; /* Larger font size for the title */
-  font-weight: bold; /* Bold font weight for emphasis */
-  margin-bottom: 10px;
+.content-box {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
 }
 
-/* Style the card text */
-.card-text {
-  font-size: 1rem; /* Smaller font size for the content */
-  text-align: left; /* Align content to the left */
+.custom-button {
+  background-color: black;
+  color: white;
+  border: none;
+  margin: 10px 0 0 10px;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Style the button container */
+.custom-button:hover {
+  background-color: #333;
+  color: white;
+}
+
 .button-container {
-  margin-top: auto; /* Push button container to the bottom */
   display: flex;
   justify-content: space-between;
+  padding: 10px;
 }

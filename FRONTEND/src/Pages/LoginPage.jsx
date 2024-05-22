@@ -30,7 +30,7 @@ const LoginPage = () => {
   };
 
   return isLoggedIn ? (
-      navigate('/mainpage')
+      navigate('/homepage')
   ) : (
     <div className="container-fluid">
       <div className="row">

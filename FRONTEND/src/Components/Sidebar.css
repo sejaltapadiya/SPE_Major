@@ -1,0 +1,37 @@
+/* Sidebar.css */
+.sidebar {
+    width: 300px;
+    background-color: rgba(0, 0, 0, 0.7); /* Slightly lighter shade of gray */
+    padding-top: 20px;
+    padding-left: 30px;
+    text-align: left;
+    height: 73.5vh;
+    font-family: Arial, sans-serif; /* Ensure this matches your navbar font */
+    color: white;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px; /* Decreased font size */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: font-size 0.3s, border 0.3s; /* Smooth transition for hover effects */
+    font-weight: bold; /* Adjust according to your navbar font weight */
+  }
+  
+  .sidebar li:hover {
+    font-size: 18px; /* Increased font size on hover */
+    border: 2px solid black;
+  }
+  
+  .sidebar .icon {
+    margin-right: 10px;
+  }
+  

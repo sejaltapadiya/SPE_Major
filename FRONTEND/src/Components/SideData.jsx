@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Button} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 function Sidebar() {
   return (

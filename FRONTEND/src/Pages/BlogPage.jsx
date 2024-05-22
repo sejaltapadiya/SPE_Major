@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import NavbarComponent from '../Components/NavbarComponent';
 import Footer from '../Components/Footer';
 import ReactHtmlParser from 'react-html-parser';
-import './BlogPage.css';
 
 const PostDetailPage = () => {
   const { postId } = useParams();
-  const navigate = useNavigate();
   const [post, setPost] = useState(null);
   const token = localStorage.getItem('authToken');
   const [imageName, setImageName] = useState('');
 
   useEffect(() => {
     fetchPost();
-  }, []);
+  }, [postId]);
 
   const fetchPost = async () => {
     try {
@@ -26,21 +24,37 @@ const PostDetailPage = () => {
       });
       setPost(response.data);
       setImageName(response.data.imageName);
-
     } catch (error) {
       console.error('Error fetching post:', error);
     }
   };
 
+  const pageStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
+  };
+
+  const contentStyle = {
+    flexGrow: 1,
+    padding: '20px',
+  };
+
+  const postImageStyle = {
+    width: '100%',
+    height: 'auto',
+    marginBottom: '20px',
+  };
+
   return (
-    <div className="post-detail-page">
+    <div style={pageStyle}>
       <NavbarComponent />
-      <div className="post-container">
+      <div style={contentStyle}>
         {post ? (
           <div>
             <h2>{post.title}</h2>
             {post.imageName && (
-              <img src={imageName} alt="Post" className="post-image" />
+              <img src={imageName} alt="Post" style={postImageStyle} />
             )}
             <div className="post-content">
               {ReactHtmlParser(post.content)}

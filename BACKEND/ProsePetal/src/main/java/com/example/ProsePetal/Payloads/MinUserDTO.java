@@ -12,5 +12,6 @@ import lombok.NoArgsConstructor;
 public class MinUserDTO {
     private String email;
     private Integer userId;
+    private String name;
 
 }

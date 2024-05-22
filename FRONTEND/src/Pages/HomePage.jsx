@@ -1,60 +1,88 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NavbarComponent from '../Components/NavbarComponent';
+import { useNavigate } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
-import { Container, Row, Col, Card } from 'react-bootstrap';
-import slide from '../Images/Carousel/8.png'; // Import your image
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import slide from '../Images/Carousel/1.jpg';
 import Footer from '../Components/Footer';
+import axios from 'axios';
+import ReactHtmlParser from 'react-html-parser';
 
 const HomePage = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [posts, setPosts] = useState([]);
+  const navigate = useNavigate();
+  const token = localStorage.getItem('authToken');
 
-  const toggleCard = () => {
-    setIsOpen(!isOpen);
+  const handleView = (postId) => {
+    navigate(`/view/${postId}`);
   };
 
+  const truncateContent = (content, wordLimit) => {
+    const words = content.split(' ');
+    if (words.length > wordLimit) {
+      return words.slice(0, wordLimit).join(' ') + '...';
+    }
+    return content;
+  };
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get('http://localhost:9595/api/posts/user/all', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setPosts(response.data);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      }
+    };
+
+    fetchPosts();
+  }, [token]);
+
   return (
-    <Container fluid>
+    <div className='fluid'>
       <NavbarComponent />
       <Container fluid style={{ padding: 0 }}>
-        <Carousel style={{ width: "100%", height: "65vh" }}>
+        <Carousel style={{ width: "100%", height: "65vh" , marginBottom:'12px'}}>
           <Carousel.Item>
             <img src={slide} alt="img1" style={{ width: "100%", height: "65vh", objectFit: "cover" }} />
           </Carousel.Item>
-          {/* Add more Carousel.Items if needed */}
         </Carousel>
-
-        {/* Card Section */}
-        <Container style={{ marginTop: '120px', marginBottom: '120px'}}>
-          <Row xs={1} md={4} className="g-4">
-            {Array.from({ length: 8 }).map((_, idx) => (
-              <Col key={idx}>
-                <Card style={{ height: '100%' }}>
-                  <Card.Img variant="top" src={slide} alt={`Card ${idx + 1}`} />
+        <h2>ARTICLES</h2>
+        <Container style={{ marginTop: '5px', marginBottom: '0px' }}>
+          <Row xs={1} md={2} lg={4} className="g-4">
+            {posts.map((post) => (
+              <Col key={post.postId}>
+                <Card style={{ height: '100%', marginBottom: '15px' }}>
+                  {post.imageName && (
+                    <Card.Img
+                      variant="top"
+                      src={`${post.imageName}`}
+                      alt="Post Image"
+                      style={{ height: '200px', objectFit: 'cover' }}
+                    />
+                  )}
                   <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto animi aperiam eos debitis voluptatum ipsam provident iure. Suscipit, minus? Quas vel sit provident nam odit itaque culpa nemo consectetur vero.
-                    </Card.Text>
-                    <button className="btn btn-link" onClick={toggleCard}>
-                      {isOpen ? 'Close' : 'Read More'}
-                    </button>
-                    {isOpen && (
-                      <div>
-                        <Card.Text className="mt-3">
-                          More content...
-                        </Card.Text>
-                      </div>
-                    )}
+                    <Card.Title>{post.title}</Card.Title>
+                    <Card.Text>{ReactHtmlParser(truncateContent(post.content, 20))}</Card.Text>
                   </Card.Body>
+                  <div className="button-container">
+                    <Button onClick={() => handleView(post.postId)} className="custom-button">
+                      View
+                    </Button>
+                  </div>
                 </Card>
               </Col>
             ))}
           </Row>
         </Container>
       </Container>
-      <Footer/>
-    </Container>
-  )
-}
+      <Footer />
+    </div>
+  );
+};
 
 export default HomePage;
