@@ -13,10 +13,11 @@ services:
     image: mysql:latest
     container_name: database-container
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: blog_db
       MYSQL_USER: sejal
-      MYSQL_PASSWORD: sejal
+      MYSQL_PASSWORD: ""
+      MYSQL_ROOT_PASSWORD: ""
     volumes:
       - database-volume:/var/lib/mysql
     networks:
@@ -30,7 +31,7 @@ services:
     environment:
       MYSQL_URL: jdbc:mysql://database:3306/blog_db?createDatabaseIfNotExist=true
       MYSQL_USERNAME: sejal
-      MYSQL_PASSWORD: sejal
+      MYSQL_PASSWORD: ""
     volumes:
       - logs:/logs
     networks:
