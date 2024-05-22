@@ -15,13 +15,14 @@ services:
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: blog_db
-      MYSQL_USER: sejal
-      MYSQL_PASSWORD: ""
-      MYSQL_ROOT_PASSWORD: ""
     volumes:
       - database-volume:/var/lib/mysql
     networks:
       - prosepetals-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "database"]
+      interval: 10s
+      retries: 5
 
   backend:
     image: sejal28/prosepetals-backend
@@ -30,7 +31,7 @@ services:
       - "9595:9595"
     environment:
       MYSQL_URL: jdbc:mysql://database:3306/blog_db?createDatabaseIfNotExist=true
-      MYSQL_USERNAME: sejal
+      MYSQL_USERNAME: root
       MYSQL_PASSWORD: ""
     volumes:
       - logs:/logs
