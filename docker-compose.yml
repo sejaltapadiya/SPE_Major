@@ -18,6 +18,8 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: blog_db
       MYSQL_ROOT_HOST: "%"
+      MYSQL_USERNAME: sejal
+      MYSQL_PASSWORD: sejal
     volumes:
       - database-volume:/var/lib/mysql
       - ./sql:/docker-entrypoint-initdb.d
