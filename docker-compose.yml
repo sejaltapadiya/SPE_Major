@@ -11,10 +11,6 @@ volumes:
 services:
   database:
     image: mysql:latest
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "database"]
-      interval: 10s
-      retries: 5
     container_name: database-container
     environment:
       MYSQL_ROOT_PASSWORD: root
