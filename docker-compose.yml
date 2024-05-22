@@ -19,6 +19,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: blog_db
+      MYSQL_USER: sejal
+      MYSQL_PASSWORD: sejal
     volumes:
       - database-volume:/var/lib/mysql
     networks:
