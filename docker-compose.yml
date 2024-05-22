@@ -24,7 +24,7 @@ services:
     networks:
       - prosepetals-network
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "database"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "database-mysql"]
       interval: 10s
       retries: 5
 
