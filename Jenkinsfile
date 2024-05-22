@@ -73,9 +73,6 @@ pipeline {
 }
 
     post {
-        always {
-            echo 'Cleaning up temporary files and containers...'
-        }
         success {
             echo 'Pipeline completed successfully!'
         }
