@@ -44,7 +44,7 @@ services:
     networks:
       - prosepetals-network
     depends_on:
-      database:
+      database-mysql:
         condition: service_healthy
 
   frontend:
