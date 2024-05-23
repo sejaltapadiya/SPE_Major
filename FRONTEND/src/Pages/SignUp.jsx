@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 export default function SignUp() {
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -14,36 +16,41 @@ export default function SignUp() {
       password: formData.get('password'),
       about: formData.get('about'),
     };
-    
+
     console.log('Form Data:', data); // Debugging: Log form data
 
     try {
       const response = await axios.post('http://localhost:9595/api/v1/auth/register', data);
-      console.log('Registration successful:', response.data);
-      navigate('/login');
+      console.log('Registration response:', response.data);
+
+      setSuccessMessage('Registration successful! Redirecting to login...');
+      setTimeout(() => {
+        navigate('/login');
+      }, 2000); // Wait for 2 seconds before redirecting to login
     } catch (error) {
       console.error('Registration failed:', error);
-      alert('Registration failed. Please try again.');
+      const errorMsg = error.response?.data?.message || 'Registration failed. Please try again.';
+      setErrorMessage(errorMsg);
     }
   };
 
   return (
-    <div 
-      className="container-fluid" 
-      style={{ 
+    <div
+      className="container-fluid d-flex"
+      style={{
         backgroundImage: 'url(https://source.unsplash.com/random/1920x1080)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '100vh',
-        justifyContent: 'center',
-        alignItems: 'center',
       }}
     >
-      <div className="row justify-content-center" >
+      <div className="row justify-content-center align-self-center w-100">
         <div className="col-md-6">
-          <div className="card" style={{marginTop:'90px'}}>
+          <div className="card" style={{ marginTop: '90px' }}>
             <h5 className="card-title text-center" style={{ marginTop: '10px' }}>Sign Up</h5>
             <div className="card-body text-start">
+              {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
+              {successMessage && <div className="alert alert-success">{successMessage}</div>}
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <label htmlFor="name" className="form-label">Name</label>
@@ -55,7 +62,7 @@ export default function SignUp() {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="password" className="form-label">Password</label>
-                  <input type="password" className="form-control" id="password" name="password" required />
+                  <input type="password" className="form-control" id="password" name="password" required minLength="6" />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="about" className="form-label">About You</label>

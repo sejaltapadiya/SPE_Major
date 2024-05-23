@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MinUserDTO {
-    private String email;
     private Integer userId;
+    private String email;
     private String name;
 
 }

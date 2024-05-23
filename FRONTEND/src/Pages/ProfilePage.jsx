@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Modal } from 'react-bootstrap';
 import profile from '../Images/profile.jpg';
 import NavbarComponent from '../Components/NavbarComponent';
 import Footer from '../Components/Footer';
 import axios from 'axios';
 
 export default function ProfilePage() {
-  const [userId, setUserId] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [about, setAbout] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -31,7 +31,6 @@ export default function ProfilePage() {
     })
     .then(response => {
       console.log('Account deleted successfully:', response.data);
-      // Redirect to home or login page after account deletion
       window.location.href = '/login';
     })
     .catch(error => {
@@ -53,6 +52,7 @@ export default function ProfilePage() {
     })
     .then(response => {
       console.log('Details updated successfully:', response.data);
+      setShowModal(true);
     })
     .catch(error => {
       console.error('Error updating details:', error);
@@ -66,8 +66,7 @@ export default function ProfilePage() {
       }
     })
     .then(response => {
-      const { userId, name, email, about } = response.data;
-      setUserId(userId);
+      const { name, email, about } = response.data;
       setName(name);
       setEmail(email);
       setAbout(about);
@@ -101,21 +100,23 @@ export default function ProfilePage() {
               <Col xs={12} md={8} className="align-self-start">
                 <div className='card-body' style={{ position: 'relative', minHeight: '600px' }}>
                   <Form>
-                    <Form.Group controlId="formUserId">
-                      <Form.Label>User ID</Form.Label>
-                      <Form.Control type="text" value={userId} readOnly />
-                    </Form.Group>
-                    <Form.Group controlId="formName">
-                      <Form.Label>Name</Form.Label>
+                    <Form.Group controlId="formName" className="mb-4">
+                      <Form.Label style={{ textAlign: 'left' }}>Name</Form.Label>
                       <Form.Control type="text" value={name} onChange={handleNameChange} />
                     </Form.Group>
-                    <Form.Group controlId="formEmail">
-                      <Form.Label>Email</Form.Label>
+                    <Form.Group controlId="formEmail" className="mb-4">
+                      <Form.Label style={{ textAlign: 'left' }}>Email</Form.Label>
                       <Form.Control type="email" value={email} onChange={handleEmailChange} />
                     </Form.Group>
-                    <Form.Group controlId="formAbout">
-                      <Form.Label>About me</Form.Label>
-                      <Form.Control type="text" value={about} onChange={handleAboutChange} />
+                    <Form.Group controlId="formAbout" className="mb-4">
+                      <Form.Label style={{ textAlign: 'left' }}>About me</Form.Label>
+                      <Form.Control 
+                        as="textarea" 
+                        value={about} 
+                        onChange={handleAboutChange} 
+                        rows={5} 
+                        style={{ resize: 'none' }}
+                      />
                     </Form.Group>
                     <div className='button' style={{ marginTop: '10px' }}>
                       <Button variant="dark" onClick={handleUpdateDetails}>
@@ -138,6 +139,20 @@ export default function ProfilePage() {
         </div>
       </div>
       <Footer />
+
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Update Successful</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Your profile details have been updated successfully.
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

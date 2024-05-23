@@ -3,7 +3,11 @@ import NavbarComponent from '../Components/NavbarComponent';
 import { useNavigate } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import slide from '../Images/Carousel/1.jpg';
+import slide1 from '../Images/Carousel/1.jpg';
+import slide2 from '../Images/Carousel/2.jpg';
+import slide3 from '../Images/Carousel/7.jpg';
+import slide4 from '../Images/Carousel/6.jpg';
+
 import Footer from '../Components/Footer';
 import axios from 'axios';
 import ReactHtmlParser from 'react-html-parser';
@@ -28,7 +32,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get('http://localhost:9595/api/posts/user/all', {
+        const response = await axios.get('http://localhost:9595/api/posts/all', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -46,11 +50,21 @@ const HomePage = () => {
     <div className='fluid'>
       <NavbarComponent />
       <Container fluid style={{ padding: 0 }}>
-        <Carousel style={{ width: "100%", height: "65vh" , marginBottom:'12px'}}>
+      <Carousel style={{ width: "100%", height: "65vh", marginBottom: '12px' }}>
           <Carousel.Item>
-            <img src={slide} alt="img1" style={{ width: "100%", height: "65vh", objectFit: "cover" }} />
+            <img src={slide1} alt="img1" style={{ width: "100%", height: "65vh", objectFit: "cover" }} />
           </Carousel.Item>
-        </Carousel>
+          <Carousel.Item>
+             <img src={slide2} alt="img2" style={{ width: "100%", height: "65vh", objectFit: "cover" }} />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img src={slide3} alt="img3" style={{ width: "100%", height: "65vh", objectFit: "cover" }} />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img src={slide4} alt="img4" style={{ width: "100%", height: "65vh", objectFit: "cover" }} />
+          </Carousel.Item>
+      </Carousel>
+
         <h2>ARTICLES</h2>
         <Container style={{ marginTop: '5px', marginBottom: '0px' }}>
           <Row xs={1} md={2} lg={4} className="g-4">

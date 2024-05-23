@@ -27,7 +27,6 @@ public class AuthenticationService {
         user.setRoles(Role.USER);
         user.setName(request.getName());
         user.setAbout(request.getAbout());
-        user.setUserId(request.getUserId());
 
         userRepo.save(user);
 
@@ -35,7 +34,8 @@ public class AuthenticationService {
         return AuthenticationResponse.builder().token(jwtToken).build();
     }
 
-    public AuthenticationResponse authenticate(AuthenticationRequest request) {
+
+ public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
 
         // Retrieve the user from the database using your repository
