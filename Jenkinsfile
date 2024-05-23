@@ -30,19 +30,10 @@ pipeline {
                 sleep 10
             }
         }
-        stage('Maven Build') {
-            environment {
-                MVN_HOME = tool 'mvn'
-            }
-            steps {
-                dir('./BACKEND/ProsePetal') {
-                    sh "${MVN_HOME}/bin/mvn clean install"
-                }
-            }
-        }
          stage('Maven Build') {
             steps {
                  dir('./BACKEND/ProsePetal') {
+                     sh "mvn clean package"
                      sh "mvn clean install"
                  }
              }
