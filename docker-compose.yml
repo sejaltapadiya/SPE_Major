@@ -23,7 +23,8 @@ services:
     volumes:
       - database-volume:/var/lib/mysql
       - ./sql:/docker-entrypoint-initdb.d
-      - ./my.cnf:/etc/mysql/conf.d/my.cnf # Add this line
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - prosepetals-network
     healthcheck:
