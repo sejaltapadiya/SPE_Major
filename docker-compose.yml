@@ -36,8 +36,8 @@ services:
       - "9595:9595"
     environment:
       MYSQL_URL: jdbc:mysql://database:3306/database?createDatabaseIfNotExist=true&enabledTLSProtocols=TLSv1.2
-      MYSQL_USERNAME: sejal
-      MYSQL_PASSWORD: sejal
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: Root@123
     volumes:
       - logs:/logs
     networks:
