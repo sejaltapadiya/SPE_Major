@@ -31,12 +31,22 @@ pipeline {
             }
         }
         stage('Maven Build') {
+            environment {
+                MVN_HOME = tool 'mvn'
+            }
             steps {
                 dir('./BACKEND/ProsePetal') {
-                    sh "mvn clean install"
+                    sh "${MVN_HOME}/bin/mvn clean install"
                 }
             }
         }
+        // stage('Maven Build') {
+        //     steps {
+        //         dir('./BACKEND/ProsePetal') {
+        //             sh "mvn clean install"
+        //         }
+        //     }
+        // }
 
         stage('Build Docker Images') {
             steps {
