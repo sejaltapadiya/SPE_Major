@@ -36,7 +36,7 @@ services:
     image: sejal28/prosepetals-backend
     container_name: prosepetals-backend
     ports:
-      - "9595:9595"
+      - "9596:9595"
     environment:
       MYSQL_URL: jdbc:mysql://database:3306/database?createDatabaseIfNotExist=true&enabledTLSProtocols=TLSv1.2
       MYSQL_USERNAME: root
