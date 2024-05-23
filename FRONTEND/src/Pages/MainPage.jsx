@@ -66,6 +66,19 @@ const MainPage = () => {
     navigate(`/view/${postId}`);
   };
 
+  const handleDelete = async (postId) => {
+    try {
+      await axios.delete(`http://localhost:9595/api/posts/user/delete/${postId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setPosts(posts.filter(post => post.postId !== postId));
+    } catch (error) {
+      console.error('Error deleting post:', error);
+    }
+  };
+
   const truncateContent = (content, wordLimit) => {
     const words = content.split(' ');
     if (words.length > wordLimit) {
@@ -106,6 +119,9 @@ const MainPage = () => {
                         </Button>
                         <Button onClick={() => handleUpdate(post.postId)} className="custom-button">
                           Edit
+                        </Button>
+                        <Button onClick={() => handleDelete(post.postId)} className="custom-button" variant="danger">
+                          Delete
                         </Button>
                       </div>
                     </Card>

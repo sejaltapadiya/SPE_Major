@@ -4,6 +4,7 @@ import axios from 'axios';
 import NavbarComponent from '../Components/NavbarComponent';
 import Footer from '../Components/Footer';
 import ReactHtmlParser from 'react-html-parser';
+import './BlogPage.css'; 
 
 const PostDetailPage = () => {
   const { postId } = useParams();
@@ -40,21 +41,34 @@ const PostDetailPage = () => {
     padding: '20px',
   };
 
-  const postImageStyle = {
-    width: '100%',
-    height: 'auto',
+  const postImageContainerStyle = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    maxWidth: '100%',
     marginBottom: '20px',
+    border: '1px solid #ddd',
+    padding: '10px',
+    borderRadius: '8px',
+  };
+
+  const postImageStyle = {
+    maxWidth: '100%',
+    maxHeight: '500px',
+    objectFit: 'contain',
   };
 
   return (
     <div style={pageStyle}>
       <NavbarComponent />
-      <div style={contentStyle}>
+      <div style={contentStyle} className="post-container">
         {post ? (
           <div>
-            <h2>{post.title}</h2>
+            <h2 className="post-title">{post.title}</h2>
             {post.imageName && (
-              <img src={imageName} alt="Post" style={postImageStyle} />
+              <div style={postImageContainerStyle}>
+                <img src={imageName} alt="Post" style={postImageStyle} />
+              </div>
             )}
             <div className="post-content">
               {ReactHtmlParser(post.content)}
