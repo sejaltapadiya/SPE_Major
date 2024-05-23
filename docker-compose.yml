@@ -16,8 +16,8 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: blog_db
       MYSQL_ROOT_HOST: "%"
-      MYSQL_USERNAME: sejal
-      MYSQL_PASSWORD: sejal
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: Root@123
     volumes:
       - database-volume:/var/lib/mysql
       - ./sql:/docker-entrypoint-initdb.d
@@ -27,6 +27,7 @@ services:
       test: ["CMD", "mysqladmin", "ping", "-h", "database"]
       interval: 10s
       retries: 5
+    restart: always
 
   backend:
     image: sejal28/prosepetals-backend
