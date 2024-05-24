@@ -1,62 +1,39 @@
-version: '3.7'
-
-networks:
-  prosepetals-network:
-    driver: bridge
-
-volumes:
-  database-volume:
-  logs:
+version: '3.8'
 
 services:
   database:
-    image: mysql
+    image: mysql:latest
     container_name: database-container
-    ports:
-      - "3305:3306"
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-      MYSQL_DATABASE: blog_db
-      MYSQL_ROOT_HOST: "%"
-      MYSQL_USERNAME: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: prosepetals
+      MYSQL_USER: root
       MYSQL_PASSWORD: Root@123
     volumes:
-      - database-volume:/var/lib/mysql
-      - ./sql:/docker-entrypoint-initdb.d
-      - ./my.cnf:/etc/mysql/conf.d/my.cnf
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - prosepetals-db-data:/var/lib/mysql
     networks:
       - prosepetals-network
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "database"]
-      interval: 10s
-      retries: 5
-    restart: always
 
   backend:
+    build: ./BACKEND/ProsePetal
     image: sejal28/prosepetals-backend
     container_name: prosepetals-backend
-    ports:
-      - "9596:9595"
-    environment:
-      MYSQL_URL: jdbc:mysql://database:3306/database?createDatabaseIfNotExist=true&enabledTLSProtocols=TLSv1.2
-      MYSQL_USERNAME: root
-      MYSQL_PASSWORD: Root@123
-    volumes:
-      - logs:/logs
+    depends_on:
+      - database
     networks:
       - prosepetals-network
-    depends_on:
-      database:
-        condition: service_healthy
 
   frontend:
+    build: ./FRONTEND
     image: sejal28/prosepetals-frontend
     container_name: prosepetals-frontend
-    stdin_open: true
-    ports:
-      - "3000:3000"
-    networks:
-      - prosepetals-network
     depends_on:
       - backend
+    networks:
+      - prosepetals-network
+
+networks:
+  prosepetals-network:
+
+volumes:
+  prosepetals-db-data:
