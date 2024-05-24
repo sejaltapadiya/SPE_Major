@@ -1,0 +1,247 @@
+[33mcommit 77590b18022be13fd6ce687cf019a86034b110a2[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Fri May 24 10:21:43 2024 +0530
+
+    Update Jenkinsfile
+
+[33mcommit e011b11ee6f7ad7d28f06630f185ba920fa9a1d8[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Fri May 24 10:18:54 2024 +0530
+
+    Update Jenkinsfile
+
+[33mcommit 674350f129434fbfad3462cff1d18c13b7d90ec3[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Fri May 24 10:15:25 2024 +0530
+
+    Update Playbook.yml
+
+[33mcommit 6f2f71da259c296f1918a67679d94354d7d86962[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Fri May 24 10:14:32 2024 +0530
+
+    Update Jenkinsfile
+
+[33mcommit c3352627a510527fd84b654b3bdea55a150971de[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Fri May 24 10:06:26 2024 +0530
+
+    Update Playbook.yml
+
+[33mcommit 0c1d58bc2ac52b29955b5ce514f5792ad4469077[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Fri May 24 09:58:38 2024 +0530
+
+    Update Jenkinsfile
+
+[33mcommit 64ac3af3f67af084b664ed4928cb81cb911e2e69[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Fri May 24 09:54:48 2024 +0530
+
+    Update Jenkinsfile
+
+[33mcommit 565d2eedf2287950cc2b2864e3dc965fac3d00db[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Fri May 24 09:54:37 2024 +0530
+
+    Update application.properties
+
+[33mcommit 1a416c9e70ba0d0d71b43302b60903bf9163816d[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Fri May 24 09:52:11 2024 +0530
+
+    Update application.properties
+
+[33mcommit 8f464a7432f6f49e677a0de41e6a33dc748a6925[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Fri May 24 09:47:31 2024 +0530
+
+    Update Jenkinsfile
+
+[33mcommit f1b0b43c9c6c8d41f9743f7152ae61b1b8306c68[m
+Author: sejaltapadiya <sejal.178@iiitb.ac.in>
+Date:   Thu May 23 17:26:00 2024 +0530
+
+    Frontend Changed
+
+[33mcommit e004d4c1ccd0dcb1d397de60efd8fe482da9ef50[m
+Author: AnkitaAgrawal12 <AnkitaAgrawal@iiitb.ac.in>
+Date:   Thu May 23 15:17:15 2024 +0530
+
+    commiting changes
+
+[33mcommit 2f4c3dce49f5150e0ea3e426e9dc3a45331cf2c8[m
+Author: AnkitaAgrawal12 <AnkitaAgrawal@iiitb.ac.in>
+Date:   Wed May 22 21:57:02 2024 +0530
+
+    commiting changes
+
+[33mcommit 48c1c6f36ebfaac49eaea154aabb4698bdfe65c1[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Thu May 23 15:13:15 2024 +0530
+
+    Update docker-compose.yml
+
+[33mcommit e43a8a6cdd4247bec33a10f12bb9e12b6a4ce84e[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Thu May 23 14:55:13 2024 +0530
+
+    Update docker-compose.yml\
+
+[33mcommit c31c7eafc73a2f11d151461784df8e6b215fed7c[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Thu May 23 14:47:02 2024 +0530
+
+    Update docker-compose.yml
+
+[33mcommit 4220039dc7234b595b9ea98d233c14ed4559d210[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Thu May 23 14:44:22 2024 +0530
+
+    Update application.properties
+
+[33mcommit 846955e0f3bbaf12dda2d64446ef2b99a34800ff[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Thu May 23 14:39:38 2024 +0530
+
+    Update docker-compose.yml
+
+[33mcommit 8b7ed58f6897286c91396e93340d150eed8ecb3b[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Thu May 23 14:38:41 2024 +0530
+
+    Create init.sql
+
+[33mcommit 078b5488b60d32852b2197398c8dbc327b582342[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Thu May 23 14:31:20 2024 +0530
+
+    Update application.properties
+
+[33mcommit 409153526dc4830617d60c261b96cbf2362722f5[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Thu May 23 14:29:51 2024 +0530
+
+    Update docker-compose.yml
+
+[33mcommit 2f95698a9e202fd1a2703ff341f8f5de746fe13e[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Thu May 23 14:21:34 2024 +0530
+
+    Update application.properties
+
+[33mcommit 923e21e78597d826a8571526d507c55a56b02d01[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Thu May 23 14:21:10 2024 +0530
+
+    Update application.properties
+
+[33mcommit f6e8c533a8e7147463a1a8967a20af9f72cab03c[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Thu May 23 14:10:22 2024 +0530
+
+    Update application.properties
+
+[33mcommit 671518d830dcc9f11b64f5850f1b37e58f3b9ca7[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Thu May 23 14:06:52 2024 +0530
+
+    Update docker-compose.yml
+
+[33mcommit b9ee5966a8db8fd9df55cf90a9a0bdfd9fc004c8[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Thu May 23 14:06:29 2024 +0530
+
+    Update and rename wait-for-mysql.sh to my.cnf
+
+[33mcommit 364f635f08edfb9549d84a73e14cec106cd9e6d9[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Thu May 23 13:23:41 2024 +0530
+
+    Update application.properties
+
+[33mcommit 6294e5dcf83c90b6ed196271f1e06842a5b7feb9[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Thu May 23 13:11:26 2024 +0530
+
+    Update docker-compose.yml
+
+[33mcommit cf38c42c66b051713d286b68e3e43388469ec015[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Thu May 23 13:11:06 2024 +0530
+
+    Update docker-compose.yml
+
+[33mcommit acf46785cb4b1add7021a1810b5c9755e305895a[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Thu May 23 12:56:58 2024 +0530
+
+    Update Jenkinsfile
+
+[33mcommit 31451e92a85bab2f27241a990f8f63bb3fb94fd8[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Thu May 23 12:55:36 2024 +0530
+
+    Update docker-compose.yml
+
+[33mcommit 5409e447698bc1b3b03064ed4b3b6beeb640047a[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Thu May 23 12:49:54 2024 +0530
+
+    Update Jenkinsfile
+
+[33mcommit ba2ed2497f0363574a9a3b458b70085184dee6bf[m
+Author: AnkitaAgrawal12 <155989679+AnkitaAgrawal12@users.noreply.github.com>
+Date:   Thu May 23 10:45:47 2024 +0530
+
+    Update Jenkinsfile
+
+[33mcommit 2981a77f3c4072dd8355c197ffc6934ada5e5982[m
+Author: AnkitaAgrawal12 <155989679+AnkitaAgrawal12@users.noreply.github.com>
+Date:   Thu May 23 09:01:43 2024 +0530
+
+    Update Jenkinsfile
+
+[33mcommit a0b5298dd9bc0b1b4f1d86dcbf18beaf8ac09266[m
+Author: AnkitaAgrawal12 <155989679+AnkitaAgrawal12@users.noreply.github.com>
+Date:   Thu May 23 08:43:39 2024 +0530
+
+    Update Jenkinsfile
+
+[33mcommit e2dbb095a97bffe61e6d57996b289287ca854c1a[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Thu May 23 00:50:25 2024 +0530
+
+    Update pom.xml'
+
+[33mcommit dd34d18e142e4f9f35b435295c4ee34b200dcfcc[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Thu May 23 00:47:58 2024 +0530
+
+    Update inventory.ini
+
+[33mcommit a324d96245d9eb41136ec14312b85243afead76c[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Wed May 22 23:24:24 2024 +0530
+
+    Update pom.xml
+
+[33mcommit 5d1e8444a7b1a38b439729f2eb136aff78d5ddb1[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Wed May 22 22:37:28 2024 +0530
+
+    Update docker-compose.yml
+
+[33mcommit 564b18de198dd3613f73f9a04e4dcbf17f05dba5[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Wed May 22 22:25:13 2024 +0530
+
+    Update Dockerfile
+
+[33mcommit a1f371470722b72794b4745e4e43a9d8a44b9077[m
+Author: sejaltapadiya <155996001+sejaltapadiya@users.noreply.github.com>
+Date:   Wed May 22 22:23:47 2024 +0530
+
+    Update Dockerfile
+
+[33mcommit a26241d546aadf1b34c114acdaab71154edc4
