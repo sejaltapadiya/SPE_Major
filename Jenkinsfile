@@ -11,7 +11,7 @@ pipeline {
                 script {
                     sh 'docker rm -f prosepetals-frontend || true'
                     sh 'docker rm -f prosepetals-backend || true'
-                    sh 'docler rm -f database-container || true'
+                    sh 'docker rm -f database-container || true'
                     sh 'docker network rm prosepetals-network || true'
                 }
             }
@@ -24,20 +24,31 @@ pipeline {
                 }
             }
         }
+
         stage('Create Network') {
             steps {
                 sh 'docker network create prosepetals-network'
                 sleep 10
             }
         }
-         stage('Maven Build') {
+
+        stage('Start Database') {
             steps {
-                 dir('./BACKEND/ProsePetal') {
-                     sh "mvn clean package"
-                     sh "mvn clean install"
-                 }
-             }
-         }
+                script {
+                    sh 'docker run -d --name database-container --network prosepetals-network -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=prosepetals -e MYSQL_USER=user -e MYSQL_PASSWORD=password mysql:latest'
+                    sleep 20 // Give the database some time to initialize
+                }
+            }
+        }
+
+        stage('Maven Build') {
+            steps {
+                dir('./BACKEND/ProsePetal') {
+                    sh "mvn clean package"
+                    sh "mvn clean install"
+                }
+            }
+        }
 
         stage('Build Docker Images') {
             steps {
@@ -64,14 +75,14 @@ pipeline {
         }
 
         stage('Start Docker Compose stack') {
-        steps {
-            script {
-                sh 'docker rm -f database-container prosepetals-backend prosepetals-frontend|| true' // Remove the conflicting container if exists
-                sh 'docker-compose up -d' // Start the Docker Compose stack
+            steps {
+                script {
+                    sh 'docker rm -f prosepetals-backend prosepetals-frontend || true' // Remove conflicting containers if they exist
+                    sh 'docker-compose up -d' // Start the Docker Compose stack
+                }
             }
         }
     }
-}
 
     post {
         success {
