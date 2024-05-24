@@ -1,39 +1,62 @@
-version: '3.8'
-
-services:
-  database:
-    image: mysql:latest
-    container_name: database-container
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: database
-      MYSQL_USER: root
-      MYSQL_PASSWORD: Root@123
-    volumes:
-      - prosepetals-db-data:/var/lib/mysql
-    networks:
-      - prosepetals-network
-
-  backend:
-    build: ./BACKEND/ProsePetal
-    image: sejal28/prosepetals-backend
-    container_name: prosepetals-backend
-    depends_on:
-      - database
-    networks:
-      - prosepetals-network
-
-  frontend:
-    build: ./FRONTEND
-    image: sejal28/prosepetals-frontend
-    container_name: prosepetals-frontend
-    depends_on:
-      - backend
-    networks:
-      - prosepetals-network
+version: '3.7'
 
 networks:
   prosepetals-network:
+    driver: bridge
 
 volumes:
-  prosepetals-db-data:
+  database-volume:
+  logs:
+
+services:
+  database:
+    image: mysql
+    container_name: database-container
+    ports:
+      - "3305:3306"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: database
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: Root@123
+    volumes:
+      - database-volume:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - prosepetals-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "database"]
+      interval: 10s
+      retries: 5
+    restart: always
+
+  backend:
+    image: sejal28/prosepetals-backend
+    container_name: prosepetals-backend
+    ports:
+      - "9596:9595"
+    environment:
+      MYSQL_URL: jdbc:mysql://database:3306/database?createDatabaseIfNotExist=true&enabledTLSProtocols=TLSv1.2
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: Root@123
+    volumes:
+      - logs:/logs
+    networks:
+      - prosepetals-network
+    depends_on:
+      database:
+        condition: service_healthy
+
+  frontend:
+    image: sejal28/prosepetals-frontend
+    container_name: prosepetals-frontend
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    networks:
+      - prosepetals-network
+    depends_on:
+      - backend
