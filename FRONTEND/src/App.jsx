@@ -28,7 +28,7 @@ function App() {
       <Route exact path='/profilepage' element={<ProfilePage/>} />
       <Route exact path='/contactpage' element={<ContactPage/>} />
       <Route exact path='/view/:postId' element={<BlogPage/>} />
-      <Route exact path='/updatepost/:postId' element={<Edit/>}/>
+      <Route exact path='/edit/:postId' element={<Edit/>}/>
       </Routes>
       </Router>
       </div>
