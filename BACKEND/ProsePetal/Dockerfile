@@ -1,14 +1,14 @@
-# Use a Java runtime as the base image
+# Use an official OpenJDK runtime as the base image
 FROM openjdk:17-jdk-slim
 
-# Set the working directory inside the container
+# Set the working directory
 WORKDIR /app
 
-# Copy the built jar file into the container
-COPY target/security-0.0.1-SNAPSHOT.jar /app/security-0.0.1-SNAPSHOT.jar
+# Copy the JAR file from the target directory
+COPY target/risk-assessment-0.0.1-SNAPSHOT.jar /app/risk-assessment-0.0.1-SNAPSHOT.jar
 
 # Expose the port your Spring Boot app runs on
-EXPOSE 9595
+EXPOSE 9192
 
-# Command to run the jar file
-ENTRYPOINT ["java", "-jar", "/app/security-0.0.1-SNAPSHOT.jar"]
+# Run the application
+CMD ["java", "-jar", "/app/risk-assessment-0.0.1-SNAPSHOT.jar"]
